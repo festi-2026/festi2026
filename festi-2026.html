@@ -651,16 +651,17 @@
           </div>
 
           <div class="org-grid">
+                       <a href="https://instagram.com/santiciraci" target="_blank" style="text-decoration:none;color:inherit;"><div class="org-card" style="border-color:#000080 #4040a0 #4040a0 #000080;background:#e8e8ff;cursor:pointer;">
+              <div class="org-pic" style="background:linear-gradient(135deg,#000080,#4040c0);">⭐</div>
+              <div class="org-name" style="color:#cc0000;">SANTINO CIRACI</div>
+              <div class="org-grade" style="color:#000080;font-weight:bold;">5-SyH TT</div>
+            </div></a>
             <div class="org-card"><div class="org-pic">🎵</div><div class="org-name">MENGANO</div><div class="org-grade">5A-SyH TT</div></div>
             <div class="org-card"><div class="org-pic">🎶</div><div class="org-name">FULANO</div><div class="org-grade">5A-SyH TT</div></div>
             <div class="org-card"><div class="org-pic">🎸</div><div class="org-name">FULANO</div><div class="org-grade">5A-SyH TT</div></div>
             <div class="org-card"><div class="org-pic">🥁</div><div class="org-name">MENGANO</div><div class="org-grade">5A-EyA TM</div></div>
             <div class="org-card"><div class="org-pic">🎹</div><div class="org-name">FULANO</div><div class="org-grade">5A-EyA TM</div></div>
-            <a href="https://instagram.com/santiciraci" target="_blank" style="text-decoration:none;color:inherit;"><div class="org-card" style="border-color:#000080 #4040a0 #4040a0 #000080;background:#e8e8ff;cursor:pointer;">
-              <div class="org-pic" style="background:linear-gradient(135deg,#000080,#4040c0);">⭐</div>
-              <div class="org-name" style="color:#cc0000;">SANTINO CIRACI</div>
-              <div class="org-grade" style="color:#000080;font-weight:bold;">5-SyH TT</div>
-            </div></a>
+
           </div>
 
         </div>
@@ -835,44 +836,60 @@
     document.getElementById('successBox').style.display='none';
   }
 
-  // GALLERY
-  const galleryData = {
-    '2024':[
-    {icon:'🖼️',label:'Foto 1'},
-    {icon:'🖼️',label:'Foto 2'},
-    {icon:'🖼️',label:'Foto 3'},
-    {icon:'🖼️',label:'Foto 4'},
-    {icon:'🖼️',label:'Foto 5'},
-    {icon:'🖼️',label:'Foto 6'}
+  // GALLERY DATA - Organizada por años
+const galleryData = {
+  '2024': [
+    { src: 'ruta/a/tu/foto2024_1.jpg', label: 'Foto 1 - 2024' },
+    { src: 'ruta/a/tu/foto2024_2.jpg', label: 'Foto 2 - 2024' },
+    { src: 'ruta/a/tu/foto2024_3.jpg', label: 'Foto 3 - 2024' },
+    { src: 'ruta/a/tu/foto2024_4.jpg', label: 'Foto 4 - 2024' },
+    { src: 'ruta/a/tu/foto2024_5.jpg', label: 'Foto 5 - 2024' },
+    { src: 'ruta/a/tu/foto2024_6.jpg', label: 'Foto 6 - 2024' }
   ],
-  '2025':[
-    {icon:'🖼️',label:'Foto 1'},
-    {icon:'🖼️',label:'Foto 2'},
-    {icon:'🖼️',label:'Foto 3'},
-    {icon:'🖼️',label:'Foto 4'},
-    {icon:'🖼️',label:'Foto 5'},
-    {icon:'🖼️',label:'Foto 6'}
-  ]};
-  let currentYear='2025';
-  function renderGallery(year){
-    const grid=document.getElementById('galleryGrid');
-    grid.innerHTML='';
-    galleryData[year].forEach(item=>{
-      const d=document.createElement('div');
-      d.className='gallery-thumb';
-      d.innerHTML=item.icon+'<span>'+item.label+'</span>';
-      grid.appendChild(d);
-    });
-  }
-  function switchGallery(year,btn){
-    currentYear=year;
-    document.querySelectorAll('.g-tab').forEach(t=>t.classList.remove('active'));
-    btn.classList.add('active');
-    renderGallery(year);
-  }
-  function refreshGallery(){renderGallery(currentYear);}
-  renderGallery('2025');
+  '2025': [
+    { src: 'ruta/a/tu/foto2025_1.jpg', label: 'Foto 1 - 2025' },
+    { src: 'ruta/a/tu/foto2025_2.jpg', label: 'Foto 2 - 2025' },
+    { src: 'ruta/a/tu/foto2025_3.jpg', label: 'Foto 3 - 2025' },
+    { src: 'ruta/a/tu/foto2025_4.jpg', label: 'Foto 4 - 2025' },
+    { src: 'ruta/a/tu/foto2025_5.jpg', label: 'Foto 5 - 2025' },
+    { src: 'ruta/a/tu/foto2025_6.jpg', label: 'Foto 6 - 2025' }
+  ]
+};
 
+let currentYear = '2025';
+
+// RENDERIZADO DE LA GALERÍA
+function renderGallery(year) {
+  const grid = document.getElementById('galleryGrid');
+  if (!grid) return; // Protección por si el elemento no existe en el DOM aún
+  
+  grid.innerHTML = '';
+  
+  galleryData[year].forEach(item => {
+    const d = document.createElement('div');
+    d.className = 'gallery-thumb';
+    
+    // Cambiamos el emoji por una etiqueta <img> real
+    d.innerHTML = `<img src="${item.src}" alt="${item.label}" class="gallery-img">
+                   <span>${item.label}</span>`;
+    grid.appendChild(d);
+  });
+}
+
+// CAMBIO DE PESTAÑA
+function switchGallery(year, btn) {
+  currentYear = year;
+  document.querySelectorAll('.g-tab').forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+  renderGallery(year);
+}
+
+function refreshGallery() {
+  renderGallery(currentYear);
+}
+
+// Inicializar la galería con el año por defecto
+renderGallery(currentYear);
   // CLOCK
   function updateClock(){
     const n=new Date();
@@ -883,6 +900,19 @@
   // COUNTER
   let cnt=4726;
   setInterval(()=>{if(Math.random()<0.3){cnt++;document.getElementById('counter').textContent=String(cnt).padStart(6,'0');}},9000);
+ .gallery-thumb {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+}
+
+.gallery-img {
+  width: 100%;
+  height: 200px; /* O el alto que prefieras para tu grid */
+  object-fit: cover; /* Esto evita que la imagen se estire o se deforme */
+  border-radius: 8px; /* Opcional: para bordes suaves */
+}
 </script>
 </body>
 </html>
