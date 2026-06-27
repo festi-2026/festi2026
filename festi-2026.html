@@ -281,16 +281,6 @@
   }
   .win-btn.primary:active { border-color: #000020 #4040c0 #4040c0 #000020; }
 
-  /* CATEGORIES */
-  .cat-table { width: 100%; border-collapse: collapse; }
-  .cat-table td { padding: 4px 6px; }
-  .cat-row { cursor: pointer; border: 1px solid transparent; }
-  .cat-row:hover { background: #000080; color: #fff; }
-  .cat-row.selected { background: #000080; color: #fff; }
-  .cat-name { font-weight: bold; font-size: 12px; }
-  .cat-desc { font-size: 10px; color: #666; }
-  .cat-row.selected .cat-desc, .cat-row:hover .cat-desc { color: #aaf; }
-
   /* SUCCESS */
   .success-box {
     background: #d4ffd4;
@@ -383,9 +373,15 @@
     flex-direction: column;
     font-size: 1.8rem;
     cursor: pointer;
+    overflow: hidden;
   }
   .gallery-thumb:hover { border-color: #000080; background: #c8c8ff; }
   .gallery-thumb span { font-size: 9px; color: #000080; margin-top: 4px; text-align: center; font-weight: bold; padding: 0 4px; }
+  .gallery-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 
   /* STATUS */
   .status-bar {
@@ -583,7 +579,10 @@
                 </div>
               </td>
               <td style="width:50%;vertical-align:top;padding-left:6px;">
-                <div class="inset-box"><div class="inset-box-title">💬 Muro del Festi</div><p>Próximamente disponible.</p></div></div>
+                <div class="inset-box">
+                  <div class="inset-box-title">ℹ️ Más info</div>
+                  <p style="line-height:1.8;">¡Próximamente más novedades sobre el Festi 2026!</p>
+                </div>
               </td>
             </tr>
           </table>
@@ -595,7 +594,7 @@
                 <div class="wall-avatar">😊</div>
                 <div>
                   <div><span class="wall-user">Rocío_99</span> <span class="wall-time">hace 2 días</span></div>
-                  <div class="wall-text">¡¡El año pasado estuvo buenísimo!! Ya quiero que llegue el 31 🎸🎤</div>
+                  <div class="wall-text">¡¡El año pasado estuvo buenísimo!! Ya quiero que llegue el día 🎸🎤</div>
                 </div>
               </div>
               <div class="wall-post">
@@ -621,14 +620,13 @@
           </div>
 
           <div class="raised-box">
-            
-<div style="text-align:center;padding:20px;">
-<a href="https://forms.google.com/" target="_blank">
-<button class="win-btn primary">📝 Ir al formulario de postulación</button>
-</a>
-<p style="margin-top:10px;">Reemplazá este enlace por tu Google Forms.</p>
-</div>
-<div class="success-box" id="successBox">
+            <div style="text-align:center;padding:20px;">
+              <a href="https://forms.google.com/" target="_blank">
+                <button class="win-btn primary">📝 Ir al formulario de postulación</button>
+              </a>
+              <p style="margin-top:10px;">Reemplazá este enlace por tu Google Forms.</p>
+            </div>
+            <div class="success-box" id="successBox">
               <strong>✅ ¡Postulación enviada con éxito!</strong><br>
               <span id="successMsg"></span><br>
               Nos pondremos en contacto pronto. ¡Gracias por ser parte del Festi 2026!
@@ -651,17 +649,18 @@
           </div>
 
           <div class="org-grid">
-                       <a href="https://instagram.com/santiciraci" target="_blank" style="text-decoration:none;color:inherit;"><div class="org-card" style="border-color:#000080 #4040a0 #4040a0 #000080;background:#e8e8ff;cursor:pointer;">
-              <div class="org-pic" style="background:linear-gradient(135deg,#000080,#4040c0);">⭐</div>
-              <div class="org-name" style="color:#cc0000;">SANTINO CIRACI</div>
-              <div class="org-grade" style="color:#000080;font-weight:bold;">5-SyH TT</div>
-            </div></a>
+            <a href="https://instagram.com/santiciraci" target="_blank" style="text-decoration:none;color:inherit;">
+              <div class="org-card" style="border-color:#000080 #4040a0 #4040a0 #000080;background:#e8e8ff;cursor:pointer;">
+                <div class="org-pic" style="background:linear-gradient(135deg,#000080,#4040c0);">⭐</div>
+                <div class="org-name" style="color:#cc0000;">SANTINO CIRACI</div>
+                <div class="org-grade" style="color:#000080;font-weight:bold;">5-SyH TT</div>
+              </div>
+            </a>
             <div class="org-card"><div class="org-pic">🎵</div><div class="org-name">MENGANO</div><div class="org-grade">5A-SyH TT</div></div>
             <div class="org-card"><div class="org-pic">🎶</div><div class="org-name">FULANO</div><div class="org-grade">5A-SyH TT</div></div>
             <div class="org-card"><div class="org-pic">🎸</div><div class="org-name">FULANO</div><div class="org-grade">5A-SyH TT</div></div>
             <div class="org-card"><div class="org-pic">🥁</div><div class="org-name">MENGANO</div><div class="org-grade">5A-EyA TM</div></div>
             <div class="org-card"><div class="org-pic">🎹</div><div class="org-name">FULANO</div><div class="org-grade">5A-EyA TM</div></div>
-
           </div>
 
         </div>
@@ -680,7 +679,7 @@
             <div style="font-size:3rem;position:relative;z-index:1;">📺</div>
             <div class="live-blink" style="position:relative;z-index:1;">● SIN SEÑAL</div>
             <div style="font-size:10px;letter-spacing:2px;margin-top:10px;position:relative;z-index:1;line-height:1.8;">
-              TRANSMISIÓN DISPONIBLE<br>EL FECHA A DEFINIR<br><br>
+              TRANSMISIÓN DISPONIBLE<br>EL DÍA DEL EVENTO<br><br>
               <span style="color:#ffff00;">C:\FESTI2026\LIVE.EXE</span>
             </div>
           </div>
@@ -737,7 +736,8 @@
 
           <div style="text-align:center;padding:16px;color:#808080;font-size:10px;margin-top:8px;">
             <span style="font-size:2rem;display:block;margin-bottom:6px;">🚧</span>
-            Las fotos del Festi 2026 estarán disponibles después del evento.<br>¡Volvé el FECHA A DEFINIR
+            Las fotos del Festi 2026 estarán disponibles después del evento.<br>
+            ¡Volvé el día del evento!
           </div>
 
         </div>
@@ -791,128 +791,72 @@
     document.getElementById('statusMsg').textContent = 'Listo — ' + addresses[id];
   }
 
-  // WALL
-  function postWall() {
-    const name = document.getElementById('wallName').value.trim();
-    const msg  = document.getElementById('wallMsg').value.trim();
-    if (!name || !msg) { alert('Por favor completá tu nombre y mensaje.'); return; }
-    const icons = ['😊','🎸','🎵','🎤','💃','🥁'];
-    const icon = icons[Math.floor(Math.random()*icons.length)];
-    const post = document.createElement('div');
-    post.className = 'wall-post';
-    post.innerHTML = `<div class="wall-avatar">${icon}</div><div><div><span class="wall-user">${name}</span> <span class="wall-time">justo ahora</span></div><div class="wall-text">${msg}</div></div>`;
-    const feed = document.getElementById('wallFeed');
-    feed.insertBefore(post, feed.firstChild);
-    document.getElementById('wallName').value = '';
-    document.getElementById('wallMsg').value = '';
-  }
-
-  // POSTULACIÓN
-  let selectedCat = null;
-  function selectCat(row, cat) {
-    document.querySelectorAll('.cat-row').forEach(r => r.classList.remove('selected'));
-    row.classList.add('selected');
-    selectedCat = cat;
-    const r = row.querySelector('input[type=radio]');
-    if (r) r.checked = true;
-  }
-  function submitPost() {
-    const nombre = document.getElementById('pNombre').value.trim();
-    const curso  = document.getElementById('pCurso').value.trim();
-    if (!nombre) { alert('Ingresá tu nombre completo.'); return; }
-    if (!curso)  { alert('Ingresá tu curso/división.'); return; }
-    if (!selectedCat) { alert('Elegí una categoría.'); return; }
-    const box = document.getElementById('successBox');
-    document.getElementById('successMsg').textContent = nombre+' ('+curso+') — Categoría: '+selectedCat;
-    box.style.display = 'block';
-    box.scrollIntoView({behavior:'smooth',block:'nearest'});
-  }
-  function resetPost() {
-    document.getElementById('pNombre').value='';
-    document.getElementById('pCurso').value='';
-    document.querySelectorAll('.cat-row').forEach(r=>r.classList.remove('selected'));
-    document.querySelectorAll('input[type=radio]').forEach(r=>r.checked=false);
-    selectedCat=null;
-    document.getElementById('successBox').style.display='none';
-  }
-
   // GALLERY DATA - Organizada por años
-const galleryData = {
-  '2024': [
-    { src: '1 2024', label: 'Foto 1 - 2024' },
-    { src: '2 2024', label: 'Foto 2 - 2024' },
-    { src: 'ruta/a/tu/foto2024_3.jpg', label: 'Foto 3 - 2024' },
-    { src: 'ruta/a/tu/foto2024_4.jpg', label: 'Foto 4 - 2024' },
-    { src: 'ruta/a/tu/foto2024_5.jpg', label: 'Foto 5 - 2024' },
-    { src: 'ruta/a/tu/foto2024_6.jpg', label: 'Foto 6 - 2024' }
-  ],
-  '2025': [
-    { src: 'ruta/a/tu/foto2025_1.jpg', label: 'Foto 1 - 2025' },
-    { src: 'ruta/a/tu/foto2025_2.jpg', label: 'Foto 2 - 2025' },
-    { src: 'ruta/a/tu/foto2025_3.jpg', label: 'Foto 3 - 2025' },
-    { src: 'ruta/a/tu/foto2025_4.jpg', label: 'Foto 4 - 2025' },
-    { src: 'ruta/a/tu/foto2025_5.jpg', label: 'Foto 5 - 2025' },
-    { src: 'ruta/a/tu/foto2025_6.jpg', label: 'Foto 6 - 2025' }
-  ]
-};
+  const galleryData = {
+    '2024': [
+      { src: 'ruta/a/tu/foto2024_1.jpg', label: 'Foto 1 - 2024' },
+      { src: 'ruta/a/tu/foto2024_2.jpg', label: 'Foto 2 - 2024' },
+      { src: 'ruta/a/tu/foto2024_3.jpg', label: 'Foto 3 - 2024' },
+      { src: 'ruta/a/tu/foto2024_4.jpg', label: 'Foto 4 - 2024' },
+      { src: 'ruta/a/tu/foto2024_5.jpg', label: 'Foto 5 - 2024' },
+      { src: 'ruta/a/tu/foto2024_6.jpg', label: 'Foto 6 - 2024' }
+    ],
+    '2025': [
+      { src: 'ruta/a/tu/foto2025_1.jpg', label: 'Foto 1 - 2025' },
+      { src: 'ruta/a/tu/foto2025_2.jpg', label: 'Foto 2 - 2025' },
+      { src: 'ruta/a/tu/foto2025_3.jpg', label: 'Foto 3 - 2025' },
+      { src: 'ruta/a/tu/foto2025_4.jpg', label: 'Foto 4 - 2025' },
+      { src: 'ruta/a/tu/foto2025_5.jpg', label: 'Foto 5 - 2025' },
+      { src: 'ruta/a/tu/foto2025_6.jpg', label: 'Foto 6 - 2025' }
+    ]
+  };
 
-let currentYear = '2025';
+  let currentYear = '2025';
 
-// RENDERIZADO DE LA GALERÍA
-function renderGallery(year) {
-  const grid = document.getElementById('galleryGrid');
-  if (!grid) return; // Protección por si el elemento no existe en el DOM aún
-  
-  grid.innerHTML = '';
-  
-  galleryData[year].forEach(item => {
-    const d = document.createElement('div');
-    d.className = 'gallery-thumb';
-    
-    // Cambiamos el emoji por una etiqueta <img> real
-    d.innerHTML = `<img src="${item.src}" alt="${item.label}" class="gallery-img">
-                   <span>${item.label}</span>`;
-    grid.appendChild(d);
-  });
-}
-
-// CAMBIO DE PESTAÑA
-function switchGallery(year, btn) {
-  currentYear = year;
-  document.querySelectorAll('.g-tab').forEach(t => t.classList.remove('active'));
-  btn.classList.add('active');
-  renderGallery(year);
-}
-
-function refreshGallery() {
-  renderGallery(currentYear);
-}
-
-// Inicializar la galería con el año por defecto
-renderGallery(currentYear);
-  // CLOCK
-  function updateClock(){
-    const n=new Date();
-    document.getElementById('clockBar').textContent=String(n.getHours()).padStart(2,'0')+':'+String(n.getMinutes()).padStart(2,'0');
+  function renderGallery(year) {
+    const grid = document.getElementById('galleryGrid');
+    if (!grid) return;
+    grid.innerHTML = '';
+    galleryData[year].forEach(item => {
+      const d = document.createElement('div');
+      d.className = 'gallery-thumb';
+      d.innerHTML = `<img src="${item.src}" alt="${item.label}" class="gallery-img" onerror="this.style.display='none';this.parentElement.innerHTML='🖼<span>${item.label}</span>'">
+                     <span>${item.label}</span>`;
+      grid.appendChild(d);
+    });
   }
-  updateClock(); setInterval(updateClock,30000);
+
+  function switchGallery(year, btn) {
+    currentYear = year;
+    document.querySelectorAll('.g-tab').forEach(t => t.classList.remove('active'));
+    btn.classList.add('active');
+    renderGallery(year);
+  }
+
+  function refreshGallery() {
+    renderGallery(currentYear);
+  }
+
+  // CLOCK
+  function updateClock() {
+    const n = new Date();
+    document.getElementById('clockBar').textContent =
+      String(n.getHours()).padStart(2,'0') + ':' + String(n.getMinutes()).padStart(2,'0');
+  }
+  updateClock();
+  setInterval(updateClock, 30000);
 
   // COUNTER
-  let cnt=4726;
-  setInterval(()=>{if(Math.random()<0.3){cnt++;document.getElementById('counter').textContent=String(cnt).padStart(6,'0');}},9000);
- .gallery-thumb {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  overflow: hidden;
-}
+  let cnt = 4726;
+  setInterval(() => {
+    if (Math.random() < 0.3) {
+      cnt++;
+      document.getElementById('counter').textContent = String(cnt).padStart(6,'0');
+    }
+  }, 9000);
 
-.gallery-img {
-  width: 100%;
-  height: 200px; /* O el alto que prefieras para tu grid */
-  object-fit: cover; /* Esto evita que la imagen se estire o se deforme */
-  border-radius: 8px; /* Opcional: para bordes suaves */
-}
+  // Init gallery on load
+  renderGallery(currentYear);
 </script>
 </body>
 </html>
